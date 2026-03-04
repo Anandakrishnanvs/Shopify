@@ -50,14 +50,14 @@ const Header = () => {
             SHOPIFY
           </Link>
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-6 flex-shrink-0">
           <Link to="/products/Men" className="text-sm font-semibold hover:text-yellow-300 transition-all-300">Men's</Link>
           <Link to="/products/Women" className="text-sm font-semibold hover:text-yellow-300 transition-all-300">Women's</Link>
           <Link to="/products/Kids" className="text-sm font-semibold hover:text-yellow-300 transition-all-300">Kid's</Link>
         </nav>
-        
+
         {/* Search Bar - Hidden on very small mobile, visible on sm+ */}
         <div className="flex-1 max-w-xl hidden sm:block mx-2">
           <SearchBar />
@@ -68,8 +68,8 @@ const Header = () => {
           {/* User Desktop */}
           {isLoggedIn ? (
             <div className="relative hidden md:block" ref={dropdownRef}>
-              <button 
-                onClick={() => setShowDropdown(!showDropdown)} 
+              <button
+                onClick={() => setShowDropdown(!showDropdown)}
                 className="flex items-center gap-2 text-sm font-medium bg-blue-700 px-3 py-1.5 rounded-full hover:bg-blue-600 transition-colors"
               >
                 <div className="w-6 h-6 bg-yellow-400 text-primary rounded-full flex items-center justify-center text-xs font-bold uppercase">
@@ -96,10 +96,10 @@ const Header = () => {
               )}
             </div>
           ) : (
-             <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-                <Link to="/login" className="text-sm font-bold px-3 py-1.5 rounded-full hover:bg-blue-700 transition-colors">Login</Link>
-                <Link to="/register" className="text-sm font-bold bg-secondary text-white px-4 py-1.5 rounded-full hover:bg-blue-600 transition-colors">Sign Up</Link>
-             </div>
+            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+              <Link to="/login" className="text-sm font-bold px-3 py-1.5 rounded-full hover:bg-blue-700 transition-colors">Login</Link>
+              <Link to="/register" className="text-sm font-bold px-4 py-1.5 rounded-full hover:bg-blue-700 transition-colors">Sign Up</Link>
+            </div>
           )}
 
           {/* Cart Icon */}
@@ -115,7 +115,7 @@ const Header = () => {
           </Link>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="md:hidden p-2 hover:bg-blue-700 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -152,7 +152,7 @@ const Header = () => {
             <Link to="/products/Kids" className="text-white text-xl font-bold py-3 flex justify-between items-center border-b border-blue-800">
               Kids' Collection <span className="text-blue-400">→</span>
             </Link>
-            
+
             <p className="text-blue-300 text-[10px] font-black uppercase tracking-widest mt-8 mb-2">My Account</p>
             {!isLoggedIn ? (
               <div className="grid grid-cols-2 gap-4 pt-2">

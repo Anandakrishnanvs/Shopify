@@ -1,20 +1,70 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🛍️ Shopify - Full Stack E-Commerce App
 
-# Run and deploy your AI Studio app
+A full-stack e-commerce web application built with **React (Vite)** on the frontend and **Node.js + Express + MongoDB** on the backend.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/drive/1E9157QxBAElFBsKkFKIJdOz2bEuRq3C5
+## 📁 Project Structure
 
-## Run Locally
+```
+shopify/
+├── frontend/       # React + Vite frontend
+└── backend/        # Node.js + Express + MongoDB backend
+```
 
-**Prerequisites:**  Node.js
+---
 
+## 🔗 Source Code
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+| Part | Folder Link |
+|------|-------------|
+| 🎨 Frontend | [/frontend](https://github.com/Anandakrishnanvs/Shopify/tree/main/frontend) |
+| 🔧 Backend  | [/backend](https://github.com/Anandakrishnanvs/Shopify/tree/main/backend) |
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- React 19 + Vite
+- React Router DOM
+- Context API (Auth & Cart)
+- CSS (custom styling)
+
+### Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT Authentication
+- bcryptjs (password hashing)
+
+---
+
+## ⚙️ Getting Started
+
+### Backend Setup
+```bash
+cd backend
+npm install
+# Create a .env file with:
+# MONGO_URI=your_mongodb_uri
+# JWT_SECRET=your_secret
+node server.js
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## ✨ Features
+
+- 🔐 User Authentication (Register / Login / JWT)
+- 🛒 Shopping Cart
+- 📦 Product Listing & Detail Pages
+- 👤 User Profile
+- 🔑 Admin Dashboard (Analytics, Products, Users)
+- 📱 Responsive Design (Mobile + Desktop)

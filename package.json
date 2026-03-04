@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/server.js",
     "dev:server": "node server/server.js",
+    "seed": "node server/seeder.js",
     "devs": "concurrently -n client,server -c blue,green \"npm run dev\" \"npm run dev:server\"",
     "build": "vite build",
     "preview": "vite preview"

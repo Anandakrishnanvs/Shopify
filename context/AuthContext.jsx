@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       sessionStorage.setItem('token', data.token);
-      const nextUser = { _id: data._id, name: data.name, email: data.email };
+      const nextUser = { _id: data._id, name: data.name, email: data.email, role: data.role || 'user' };
       setUser(nextUser);
       sessionStorage.setItem('user', JSON.stringify(nextUser));
       toast.success(`Welcome back, ${nextUser.name}!`);
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       sessionStorage.setItem('token', data.token);
-      const nextUser = { _id: data._id, name: data.name, email: data.email };
+      const nextUser = { _id: data._id, name: data.name, email: data.email, role: data.role || 'user' };
       setUser(nextUser);
       sessionStorage.setItem('user', JSON.stringify(nextUser));
       toast.success(`Welcome, ${nextUser.name}!`);
@@ -119,6 +119,7 @@ export const AuthProvider = ({ children }) => {
         _id: data._id,
         name: data.name,
         email: data.email,
+        role: data.role || user?.role || 'user',
         phone: data.phone,
         address: data.address,
         city: data.city,
@@ -177,7 +178,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout, register, updateProfile, deleteAccount, loading }}>
+    <AuthContext.Provider value={{ user, isLoggedIn: !!user, isAdmin: user?.role === 'admin', login, logout, register, updateProfile, deleteAccount, loading }}>
       {children}
     </AuthContext.Provider>
   );

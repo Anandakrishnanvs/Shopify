@@ -6,6 +6,7 @@ import {
   updateUserRole,
   deleteUserByAdmin,
   getDashboardStats,
+  getAnalytics,
 } from '../controllers/adminController.js';
 import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
@@ -13,6 +14,7 @@ import { protect, adminOnly } from '../middleware/authMiddleware.js';
 router.use(protect, adminOnly);
 
 router.get('/dashboard', getDashboardStats);
+router.get('/analytics', getAnalytics);
 router.get('/users', getAllUsers);
 router.get('/users/:id', getUserById);
 router.put('/users/:id/role', updateUserRole);

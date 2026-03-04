@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 
 const Header = () => {
   const { cartCount } = useCart();
-  const { isLoggedIn, user, logout } = useAuth();
+  const { isLoggedIn, user, isAdmin, logout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -87,6 +87,9 @@ const Header = () => {
                     <p className="text-sm text-gray-900 font-bold truncate">{user?.name}</p>
                   </div>
                   <Link to="/profile" className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Your Profile</Link>
+                  {isAdmin && (
+                    <Link to="/admin" className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Admin Panel</Link>
+                  )}
                   <Link to="/orders" className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Orders</Link>
                   <button onClick={logout} className="w-full text-left block px-4 py-2.5 text-sm text-red-600 font-semibold hover:bg-red-50 transition-colors">Logout</button>
                 </div>
@@ -95,7 +98,7 @@ const Header = () => {
           ) : (
              <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <Link to="/login" className="text-sm font-bold px-3 py-1.5 rounded-full hover:bg-blue-700 transition-colors">Login</Link>
-                <Link to="/register" className="text-sm font-bold bg-secondary text-white px-4 py-1.5 rounded-full hover:bg-orange-600 transition-colors">Sign Up</Link>
+                <Link to="/register" className="text-sm font-bold bg-secondary text-white px-4 py-1.5 rounded-full hover:bg-blue-600 transition-colors">Sign Up</Link>
              </div>
           )}
 
@@ -159,6 +162,9 @@ const Header = () => {
             ) : (
               <div className="flex flex-col space-y-2">
                 <Link to="/profile" className="text-white text-lg font-semibold py-2">Account Dashboard</Link>
+                {isAdmin && (
+                  <Link to="/admin" className="text-white text-lg font-semibold py-2">Admin Panel</Link>
+                )}
                 <Link to="/orders" className="text-white text-lg font-semibold py-2">Recent Orders</Link>
                 <button onClick={logout} className="text-red-300 text-lg font-bold py-2 text-left">Sign Out</button>
               </div>

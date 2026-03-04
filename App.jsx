@@ -14,6 +14,12 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import FAQPage from './pages/FAQPage';
 import ContactPage from './pages/ContactPage';
+import AdminLayout from './components/AdminLayout';
+import AdminDashboardPage from './pages/AdminDashboardPage';
+import AdminUsersPage from './pages/AdminUsersPage';
+import AdminProductsPage from './pages/AdminProductsPage';
+import AdminRoute from './components/AdminRoute';
+import AdminAnalyticsPage from './pages/AdminAnalyticsPage';
 import BottomNav from './components/BottomNav';
 import ScrollToTop from './components/ScrollToTop';
 import { Toaster } from 'react-hot-toast';
@@ -25,8 +31,8 @@ const App = () => {
         <BrowserRouter>
           <ScrollToTop />
           <div className="flex flex-col min-h-screen bg-light-blue selection:bg-primary selection:text-white">
-            <Toaster 
-              position="top-center" 
+            <Toaster
+              position="top-center"
               reverseOrder={false}
               toastOptions={{
                 duration: 3000,
@@ -59,6 +65,12 @@ const App = () => {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/faq" element={<FAQPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+                  <Route index element={<AdminDashboardPage />} />
+                  <Route path="users" element={<AdminUsersPage />} />
+                  <Route path="products" element={<AdminProductsPage />} />
+                  <Route path="analytics" element={<AdminAnalyticsPage />} />
+                </Route>
               </Routes>
             </main>
             <Footer />

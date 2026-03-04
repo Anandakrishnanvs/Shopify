@@ -21,7 +21,10 @@ router.get('/check-user', protect, checkUser);
 router.get('/check-admin', protect, adminOnly, checkAdmin);
 router
   .route('/profile')
+  .get(protect, getMe)
   .put(protect, updateUserProfile)
   .delete(protect, deleteUserAccount);
+router.get('/admin/profile', protect, adminOnly, getMe);
+router.get('/user/profile', protect, getMe);
 
 export default router;

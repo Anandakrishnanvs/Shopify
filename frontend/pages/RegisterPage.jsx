@@ -36,7 +36,7 @@ const RegisterPage = () => {
               className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-medium"
               id="name"
               type="text"
-              placeholder="John Doe"
+              placeholder="Enter ur name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -50,7 +50,7 @@ const RegisterPage = () => {
               className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-medium"
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="enter a valid gmail id"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

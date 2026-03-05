@@ -26,7 +26,7 @@ const LoginPage = () => {
           <p className="text-gray-500 font-medium">Welcome back! Please enter your details.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
           <div>
             <label className="block text-gray-900 text-xs font-black uppercase tracking-widest mb-2" htmlFor="email">
               Email Address
@@ -35,9 +35,10 @@ const LoginPage = () => {
               className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-medium"
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="enter ur existing email id"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="new-password"
               required
             />
           </div>
@@ -55,6 +56,7 @@ const LoginPage = () => {
               placeholder="••••••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
               required
             />
           </div>

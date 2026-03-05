@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "server": "node server/server.js",
-    "dev:server": "node server/server.js",
-    "seed": "node server/seeder.js",
+    "dev": "vite frontend",
+    "server": "node backend/server.js",
+    "dev:server": "node backend/server.js",
+    "seed": "node backend/seeder.js",
     "devs": "concurrently -n client,server -c blue,green \"npm run dev\" \"npm run dev:server\"",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build frontend",
+    "preview": "vite preview frontend"
   },
   "dependencies": {
     "@google/genai": "^1.42.0",

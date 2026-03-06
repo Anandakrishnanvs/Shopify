@@ -54,7 +54,7 @@ const registerUser = async (req, res) => {
       name: error.name,
       code: error.code
     });
-    return res.status(500).json({ 
+    return res.status(500).json({
       message: 'Server error during registration',
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
@@ -200,7 +200,7 @@ const checkUser = async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ message: 'Not authenticated', isAuthenticated: false });
     }
-    
+
     res.json({
       isAuthenticated: true,
       user: {
@@ -224,9 +224,9 @@ const checkAdmin = async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ message: 'Not authenticated', isAdmin: false });
     }
-    
+
     const isAdmin = req.user.role === 'admin';
-    
+
     res.json({
       isAdmin,
       user: {

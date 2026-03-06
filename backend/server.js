@@ -57,6 +57,9 @@ process.on('uncaughtException', (err) => {
   console.log(`Uncaught Exception: ${err.message}`);
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Only listen if not running in Vercel Serverless environment
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 export default app;

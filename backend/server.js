@@ -20,7 +20,10 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: true,
+  origin: (origin, callback) => {
+    // Allow all origins to prevent Vercel deployment CORS blocks
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -46,8 +49,14 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5001;
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+// Global error handlers to prevent app from completely crashing
+process.on('unhandledRejection', (err) => {
+  console.log(`Unhandled Rejection: ${err.message}`);
+});
+process.on('uncaughtException', (err) => {
+  console.log(`Uncaught Exception: ${err.message}`);
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 export default app;

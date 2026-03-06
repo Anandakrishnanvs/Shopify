@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 import sendWelcomeEmail from '../utils/sendEmail.js';
 
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+  return jwt.sign({ id }, process.env.JWT_SECRET || 'aVerySecureSecretForShopifyApp2024DoNotShareThisValue', {
+    expiresIn: process.env.JWT_EXPIRE || '7d',
   });
 };
 
@@ -37,8 +37,8 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid user data' });
     }
 
-    // Send welcome email asynchronously without blocking the response
-    sendWelcomeEmail(user.email, user.name);
+    // Send welcome email asynchronously safely without crashing the route
+    Promise.resolve().then(() => sendWelcomeEmail(user.email, user.name)).catch(err => console.error('Email error:', err));
 
     return res.status(201).json({
       _id: user._id,

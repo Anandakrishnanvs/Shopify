@@ -37,8 +37,13 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid user data' });
     }
 
-    // Send welcome email asynchronously safely without crashing the route
-    Promise.resolve().then(() => sendWelcomeEmail(user.email, user.name)).catch(err => console.error('Email error:', err));
+    // In serverless environments like Vercel, we must await the email sending
+    // otherwise the function will terminate before the email is actually sent.
+    try {
+      await sendWelcomeEmail(user.email, user.name);
+    } catch (emailError) {
+      console.error('Failed to send welcome email:', emailError);
+    }
 
     return res.status(201).json({
       _id: user._id,
